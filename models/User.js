@@ -2,7 +2,7 @@
 const {Schema, model} = require('mongoose');
 
 //User schema instantiation
-const UserSchema = new Schema(
+const userSchema = new Schema(
     {
         //username of type string, has to be required, unique, and trimmed
         username: {
@@ -22,7 +22,7 @@ const UserSchema = new Schema(
         //thoughts array, containing an _id referencing the Thoughts model
         thoughts: [],
         //friends array, containing an _id referencing the user model as a self reference
-        friends: [UserSchema]
+        friends: [userSchema]
     },
     {
         toJSON: {
@@ -33,12 +33,12 @@ const UserSchema = new Schema(
 )
 
 //Implement a friend count virtual on UserSchema
-UserSchema.virtual('friendCount').get(function(){
+userSchema.virtual('friendCount').get(function(){
     return this.friends.length;
 })
 
 //Define the User model based on UserSchema
-const User = model('User', UserSchema);
+const User = model('User', userSchema);
 
 //Export the model
 module.exports = User;
