@@ -1,3 +1,4 @@
-// WHEN I enter the command to invoke the application
-// THEN my server is started and the Mongoose models are synced to the MongoDB database
+const User = require('./User');
+const Thought = require('./Thought');
 
+module.exports = {User, Thought};
