@@ -1,6 +1,15 @@
-// WHEN I open API GET routes in Insomnia Core for users and thoughts
-// THEN the data for each of these routes is displayed in a formatted JSON
-// WHEN I test API POST, PUT, and DELETE routes in Insomnia Core
-// THEN I am able to successfully create, update, and delete users and thoughts in my database
-// WHEN I test API POST and DELETE routes in Insomnia Core
-// THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+const router = require('express').Router();
+const {getAllThoughts, getSingleThought, createThought, updateThought, deleteThought} = require('../../controllers/thought-controller');
+
+//Routes /api/thoughts
+router.route('/')
+.get(getAllThoughts)
+.post(createThought);
+
+//Routes /api/thoughts/:id
+router.route('/:id')
+.get(getSingleThought)
+.put(updateThought)
+.delete(deleteThought);
+
+module.exports = router;
