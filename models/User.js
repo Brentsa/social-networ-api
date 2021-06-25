@@ -22,7 +22,7 @@ const userSchema = new Schema(
         //thoughts array, containing an _id referencing the Thoughts model
         thoughts: [],
         //friends array, containing an _id referencing the user model as a self reference
-        friends: [userSchema]
+        friends: []
     },
     {
         toJSON: {
