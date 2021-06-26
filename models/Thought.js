@@ -7,7 +7,7 @@ const reactionSchema = new Schema(
         //reaction custom id that is an ObjectId type
         reactionId: {
             type: Types.ObjectId,
-            default: new Types.ObjectId()
+            default: () => new Types.ObjectId()
         },
         //reaction body that contains text up to a maximum of 280 characters
         reactionBody: {
