@@ -3,14 +3,14 @@ const {Thought} = require('../models');
 const thoughtController = {
     //Get all thoughts
     getAllThoughts(req, res){
-        Thought.find({})
+        Thought.find({}).select('-__v')
         .then(dbThoughtData => res.json(dbThoughtData))
         .catch(error => res.status(500).json(error));
     },
 
     //Get a single thought by id
     getSingleThought({params}, res){
-        Thought.findById(params.id)
+        Thought.findById(params.id).select('-__v')
         .then(dbThoughtData => !dbThoughtData ? res.status(404).json({message: "Thought with this id not found."}) : res.json(dbThoughtData))
         .catch(error => res.status(500).json(error));
     },

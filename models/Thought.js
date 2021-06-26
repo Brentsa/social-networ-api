@@ -1,5 +1,6 @@
 //Import Schema class and model function from mongoose
 const {Schema, model, Types} = require('mongoose');
+const formatDate = require('../utils/helpers');
 
 //Define a reaction schema
 const reactionSchema = new Schema(
@@ -24,12 +25,12 @@ const reactionSchema = new Schema(
         //created at date that has a default value of current time and a getter method to format the timestamp
         createdAt: {
             type: Date,
-            default: Date.now
-            //implement get
+            default: Date.now,
+            get: formatDate
         }
     },
     {
-        toJson: {getters: true}
+        toJSON: {getters: true}
     }
 );
 
@@ -47,8 +48,7 @@ const thoughtSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            //implement get
-
+            get: formatDate
         },
         //user that created this though, this is a required string
         username: {
