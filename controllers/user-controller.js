@@ -4,7 +4,7 @@ const userController = {
 
     //Get all users in the database
     getAllUsers(req, res){
-        User.find({}).populate({path: 'thoughts', select: '-__v'}).select('-__v')
+        User.find({}).populate('thoughts', '-__v').populate('friends', '-__v').select('-__v')
         .then(dbUserData => res.json(dbUserData))
         .catch(error => res.status(500).json(error));
     },
