@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(routes);
 
 //Instruct mongoose to connect with the website mongodb or create and connect with the specified local database
-mongoose.connect('mongodb://localhost:social-network', {
+mongoose.connect('mongodb://localhost/social-network', {
     useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true, 

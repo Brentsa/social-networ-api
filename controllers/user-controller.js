@@ -4,14 +4,14 @@ const userController = {
 
     //Get all users in the database
     getAllUsers(req, res){
-        User.find({}).populate('thoughts', '-__v').populate('friends', '-__v').select('-__v')
+        User.find({})
         .then(dbUserData => res.json(dbUserData))
         .catch(error => res.status(500).json(error));
     },
 
     //Get a single user in the database using their id
     getSingleUser({params}, res){
-        User.findById(params.id).populate({path: 'thoughts', select: '-__v'}).select('-__v')
+        User.findById(params.id).populate('thoughts', '-__v').populate('friends', '-__v').select('-__v')
         .then(dbUserData => {
             if(!dbUserData) 
                 return res.status(404).json({message: 'No user found with this id.'})
